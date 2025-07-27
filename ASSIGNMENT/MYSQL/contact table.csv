@@ -1,0 +1,4 @@
+CONTACT_ID,COMPANY_ID,FIRST_NAME,LAST_NAME,STREET,CITY,STATE,ZIP,IS_MAIN,EMAIL,PHONE
+1,101,John,Smith,"123 Maple St","New York",NY,100-01,1,john@gmail.com,2533656
+2,102,"Alice ",Johnson,"252 Oak","los Angeles",NY,100-20,0,alice@gmail.com,20022366
+3,103,heyy,bnbn,125aok,LA,Ny,200-36,1,heyy@gamil.com,20002365
