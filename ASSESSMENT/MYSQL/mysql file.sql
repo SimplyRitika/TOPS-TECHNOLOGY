@@ -1,0 +1,48 @@
+
+/* Create a Trigger that will insert a record into the employee_audit .
+table every time a new employee is added to the employee’s table: */
+
+CREATE DATABASE ASSESSMENT ; 
+USE ASSESSMENT; 
+
+CREATE TABLE EMPLOOYEES 
+(
+Employe_id INT AUTO_INCREMENT PRIMARY KEY, 
+Name VARCHAR (100),
+Position VARCHAR (100), 
+Salary DECIMAL (10, 2),
+Hire_date DATE
+); 
+
+CREATE TABLE employee_audit 
+(
+Audit_id INT AUTO_INCREMENT PRIMARY KEY,
+Employee_id INT,
+Name VARCHAR(100),
+Position VARCHAR (100), 
+Salary DECIMAL (10, 2), 
+Hire_date DATE,
+Action_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+); 
+
+INSERT INTO EMPLOOYEES  (name, position, salary, hire_date) VALUES ('John Doe',
+'Software Engineer', 80000.00, '2022-01-15'),
+('Jane Smith', 'Project Manager', 90000.00, '2021-05-22'),
+('Alice Johnson', 'UX Designer', 75000.00, '2023-03-01'); 
+
+DELIMITER ##
+
+CREATE TRIGGER NEW4 AFTER INSERT 
+ON EMPLOOYEES FOR EACH ROW 
+BEGIN
+    INSERT INTO Employee_audit (Employee_id, Name, Position, Salary, Hire_date)
+    VALUES (NEW.Employee_id, NEW.Name, NEW.Position, NEW.Salary, NEW.Hire_date);
+END ##
+DELIMITER ; 
+
+INSERT INTO EMPLOOYEES  (name, position, salary, hire_date) VALUES ('RUTU','DATA ANALYST', 85000.00,'2022-01-15');
+
+-- AFTER INSERT TRIGGER WAS CREATED --
+
+
+
